@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.io>
+#include <signal.h>
+#include <unistd.h>
+
+int stupid(){
+  printf("hoal mi pid es: %d\n", getpid());
+}
+
+static int sighandler(int signo){
+  if (signo == SIGINT){
+    return 0;
+  }
+}
+
+int main(){
+  signal(SIGINT, sighandler);
+  while(1234){
+    stupid();
+    sleep(1);
+  }
+}
